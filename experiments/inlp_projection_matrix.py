@@ -1,9 +1,11 @@
 import argparse
 import os
+import sys
 
 import torch
 import transformers
 
+sys.path.append(os.getcwd() + '/..')
 from bias_bench.dataset import load_inlp_data
 from bias_bench.debias.inlp import compute_projection_matrix
 from bias_bench.model import models
@@ -32,7 +34,7 @@ parser.add_argument(
     action="store",
     type=str,
     default="bert-base-uncased",
-    choices=["bert-base-uncased", "albert-base-v2", "roberta-base", "gpt2"],
+    choices=["bert-base-uncased", "albert-base-v2", "roberta-base", "gpt2", "gpt2-medium", "gpt2-large"],
     help="HuggingFace model name or path (e.g., bert-base-uncased). Checkpoint from which a "
     "model is instantiated.",
 )

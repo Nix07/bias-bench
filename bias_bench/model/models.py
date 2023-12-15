@@ -46,6 +46,10 @@ class GPT2LMHeadModel:
     def __new__(self, model_name_or_path):
         return transformers.GPT2LMHeadModel.from_pretrained(model_name_or_path)
 
+class GPTJForCausalLM:
+    def __new__(self, model_name_or_path):
+        return transformers.GPTJForCausalLM.from_pretrained(model_name_or_path)
+
 
 class _SentenceDebiasModel:
     def __init__(self, model_name_or_path, bias_direction):
@@ -265,6 +269,11 @@ class CDAGPT2LMHeadModel:
         model = transformers.GPT2LMHeadModel.from_pretrained(model_name_or_path)
         return model
 
+class CDAGPTJForCausalLM:
+    def __new__(self, model_name_or_path):
+        model = transformers.GPTJForCausalLM.from_pretrained(model_name_or_path)
+        return model
+
 
 class DropoutBertModel:
     def __new__(self, model_name_or_path):
@@ -313,6 +322,10 @@ class DropoutGPT2LMHeadModel:
         model = transformers.GPT2LMHeadModel.from_pretrained(model_name_or_path)
         return model
 
+class DropoutGPTJLMHeadModel:
+    def __new__(self, model_name_or_path):
+        model = transformers.GPTJForCausalLM.from_pretrained(model_name_or_path)
+        return model
 
 class BertForSequenceClassification:
     def __new__(self, model_name_or_path, config):
@@ -509,6 +522,12 @@ class SelfDebiasRobertaForMaskedLM:
 
 
 class SelfDebiasGPT2LMHeadModel:
+    def __new__(self, model_name_or_path):
+        model = GPT2Wrapper(model_name_or_path, use_cuda=False)
+        return model
+
+
+class SelfDebiasGPTJLMHeadModel:
     def __new__(self, model_name_or_path):
         model = GPT2Wrapper(model_name_or_path, use_cuda=False)
         return model

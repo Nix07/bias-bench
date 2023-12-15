@@ -27,6 +27,7 @@ parser.add_argument(
         "AlbertForMaskedLM",
         "RobertaForMaskedLM",
         "GPT2LMHeadModel",
+        "GPTJForCausalLM",
     ],
     help="Model to evalute (e.g., BertForMaskedLM). Typically, these correspond to a HuggingFace "
     "class.",
@@ -36,7 +37,7 @@ parser.add_argument(
     action="store",
     type=str,
     default="bert-base-uncased",
-    choices=["bert-base-uncased", "albert-base-v2", "roberta-base", "gpt2"],
+    choices=["bert-base-uncased", "albert-base-v2", "roberta-base", "gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl", "EleutherAI/gpt-j-6b"],
     help="HuggingFace model name or path (e.g., bert-base-uncased). Checkpoint from which a "
     "model is instantiated.",
 )
